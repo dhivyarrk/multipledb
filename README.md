@@ -50,3 +50,17 @@ CREATE TABLE cars1 (
 drop table cars1;
 
 ```
+
+Create migrations:
+
+```
+flask --app=flaskbackendmultipledb db init --multidb
+flask --app=flaskbackendmultipledb db migrate
+flask --app=flaskbackendmultipledb db upgrade
+```
+
+Run app
+
+```
+flask --app=flaskbackendmultipledb run
+```
