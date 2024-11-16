@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users AM</title>
+</head>
+<body>
+    <h1>Users from AsiaUserAM</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+                <th>Join Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in q %}
+            <tr>
+                <td>{{ user.user_id }}</td>
+                <td>{{ user.user_name }}</td>
+                <td>{{ user.join_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+</body>
+</html>
