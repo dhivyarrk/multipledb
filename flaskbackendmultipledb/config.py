@@ -1,5 +1,5 @@
 class MultidbConfig(object):
-    SQLALCHEMY_DATABASE_URI = "postgresql://db_user:12345@127.0.0.1:5432/asia_database"
+    SQLALCHEMY_DATABASE_URI = "postgresql://db_user:12345@127.0.0.1:5432/default_database"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_BINDS = {
         'asia_database': 'postgresql://db_user:12345@127.0.0.1:5432/asia_database',

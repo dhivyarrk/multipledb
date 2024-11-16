@@ -1,6 +1,6 @@
 from flaskbackendmultipledb.database import db
 
-class UserAM(db.Model):
+class AmericaUserAM(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'users_am'
 
@@ -8,8 +8,7 @@ class UserAM(db.Model):
     user_name = db.Column(db.String(), nullable=False)
     join_date = db.Column(db.Date, nullable=False)
 
-
-class UserNZ(db.Model):
+class AmericaUserNZ(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'users_nz'
 
@@ -18,7 +17,7 @@ class UserNZ(db.Model):
     join_date = db.Column(db.Date, nullable=False)
 
 
-class GenericProducts(db.Model):
+class AmericaGenericProducts(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'generic_products'
 
@@ -27,7 +26,7 @@ class GenericProducts(db.Model):
     product_description = db.Column(db.String(), nullable=False)
 
 
-class RegionalProducts(db.Model):
+class AmericaRegionalProducts(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'regional_products'
 
@@ -36,11 +35,11 @@ class RegionalProducts(db.Model):
     product_description = db.Column(db.String(), nullable=False)
     
 
-class UserAMmembership(db.Model):
+class AmericaUserAMmembership(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'users_am_membership'
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users_am.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users_am.user_id'), primary_key=True, nullable=False)
     membership = db.Column(db.String(), nullable=False, default='regular')
     
     __table_args__ = (
@@ -48,21 +47,21 @@ class UserAMmembership(db.Model):
     )
    
 
-class UserNZmembership(db.Model):
+class AmericaUserNZmembership(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'users_nz_membership'
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users_nz.id'), nullable=False)
-    membership = db.Column(db.String(), nullable=False, default='regular'))
+    user_id = db.Column(db.Integer,  db.ForeignKey('users_nz.user_id'), primary_key=True, nullable=False)
+    membership = db.Column(db.String(), nullable=False, default='regular')
     
     __table_args__ = (
         db.CheckConstraint(membership.in_(['regular', 'premium']), name='member_types'),
     )
 
 
-class Metadata_America(db.Model):
+class AmericaMetadata_America(db.Model):
     __bind_key__ = 'america_database'
     __tablename__ = 'metadata_america'
 
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    metadata = db.Column(db.String(), nullable=False)
+    metadata_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    metadata_info = db.Column(db.String(), nullable=False)

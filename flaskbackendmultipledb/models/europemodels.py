@@ -1,49 +1,67 @@
-from .database import db
-class Seller(db.Model):
-    __bind_key__ = 'asia_database'
-    __tablename__ = 'seller'
+from flaskbackendmultipledb.database import db
 
-    seller_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    seller_name = db.Column(db.String(), unique=True, nullable=False)
-    join_date = db.Column(db.Date, nullable=False)
-
-
-class User(db.Model):
-    __bind_key__ = 'asia_database'
-    __tablename__ = 'user'
+class EuropeUserAM(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'users_am'
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_name = db.Column(db.String(), nullable=False)
-    membership_type = db.Column(db.String(), nullable=False)
+    join_date = db.Column(db.Date, nullable=False)
+
+class EuropUserNZ(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'users_nz'
+
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_name = db.Column(db.String(), nullable=False)
     join_date = db.Column(db.Date, nullable=False)
 
 
-class Generic_Products(db.Model):
-    __bind_key__ = 'asia_database'
+class EuropeGenericProducts(db.Model):
+    __bind_key__ = 'europe_database'
     __tablename__ = 'generic_products'
 
     product_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     product_name = db.Column(db.String(), nullable=False)
-    price = db.Column(db.String(), nullable=False)
-    availability = db.Column(db.Integer, nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-    seller_id = db.Column(db.Integer, db.ForeignKey('sellers.id'), nullable=False)
+    product_description = db.Column(db.String(), nullable=False)
 
 
-
-class Reginol_Products(db.Model):
-    __bind_key__ = 'asia_database'
-    __tablename__ = 'reginol_products'
+class EuropeRegionalProducts(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'regional_products'
 
     product_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     product_name = db.Column(db.String(), nullable=False)
-    price = db.Column(db.String(), nullable=False)
-    availability = db.Column(db.Integer, nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
-    seller_id = db.Column(db.Integer, db.ForeignKey('sellers.id'), nullable=False)
+    product_description = db.Column(db.String(), nullable=False)
+    
+
+class EuropeUserAMmembership(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'users_am_membership'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users_am.user_id'), primary_key=True, nullable=False)
+    membership = db.Column(db.String(), nullable=False, default='regular')
+    
+    __table_args__ = (
+        db.CheckConstraint(membership.in_(['regular', 'premium']), name='member_types'),
+    )
+   
+
+class EuropeUserNZmembership(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'users_nz_membership'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users_nz.user_id'), primary_key=True, nullable=False)
+    membership = db.Column(db.String(), nullable=False, default='regular')
+    
+    __table_args__ = (
+        db.CheckConstraint(membership.in_(['regular', 'premium']), name='member_types'),
+    )
 
 
-class Category(db.Model):
-    __tablename__ = 'categories'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False, unique=True)
+class EuropeMetadata_Europe(db.Model):
+    __bind_key__ = 'europe_database'
+    __tablename__ = 'metadata_europe'
+
+    metadata_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    metadata_info = db.Column(db.String(), nullable=False)
