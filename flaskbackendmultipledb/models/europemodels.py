@@ -8,7 +8,7 @@ class EuropeUserAM(db.Model):
     user_name = db.Column(db.String(), nullable=False)
     join_date = db.Column(db.Date, nullable=False)
 
-class EuropUserNZ(db.Model):
+class EuropeUserNZ(db.Model):
     __bind_key__ = 'europe_database'
     __tablename__ = 'users_nz'
 
