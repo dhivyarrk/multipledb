@@ -55,6 +55,8 @@ Install from requirement.txt
 Create migrations:
 
 ```
+git clone <repository>
+cd multipledb
 flask --app=flaskbackendmultipledb db init --multidb
 flask --app=flaskbackendmultipledb db migrate
 flask --app=flaskbackendmultipledb db upgrade
