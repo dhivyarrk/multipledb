@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Americausers</title>
+</head>
+<body>
+    <h1>Users from database {{ database }} and table {{ table }}</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Product Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for products in q %}
+            <tr>
+                <td>{{ products.product_id }}</td>
+                <td>{{ products.product_name }}</td>
+                <td>{{ products.product_description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+</body>
+</html>

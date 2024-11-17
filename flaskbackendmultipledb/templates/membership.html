@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Users from database {{ database }} and table {{ table }}</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>membership</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for membership in q %}
+            <tr>
+                <td>{{ membership.user_id }}</td>
+                <td>{{ membership.membership }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+</body>
+</html>

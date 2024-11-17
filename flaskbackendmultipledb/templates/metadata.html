@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Americausers</title>
+</head>
+<body>
+    <h1>Users from database {{ database }} and table {{ table }}</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Metadata ID</th>
+                <th>Metadata Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for metadata in q %}
+            <tr>
+                <td>{{ metadata.metadata_id }}</td>
+                <td>{{ metadata.metadata_info }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+</body>
+</html>

@@ -36,7 +36,8 @@ class AmericaGenericProductsList(restful.Resource):
     
     def get(self):
         q = AmericaGenericProducts.query.all()  
-        return render_template('generic_products.html', q=q)
+        html_content = render_template('products.html', q=q, database="America", table= "genericproducts")
+        return Response(html_content, mimetype='text/html')
 
 
 class AmericaRegionalProductsList(restful.Resource):
@@ -46,7 +47,8 @@ class AmericaRegionalProductsList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('regional_products.html', q=q)
+        html_content = render_template('products.html', q=q, database="America", table= "regionalproducts")
+        return Response(html_content, mimetype='text/html')
 
 
 class AmericaUserAMmembershipList(restful.Resource):
@@ -56,7 +58,8 @@ class AmericaUserAMmembershipList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('users_am_membership.html', q=q)
+        html_content = render_template('membership.html', q=q, database="America", table= "americauserammembership")
+        return Response(html_content, mimetype='text/html')
 
 
 class AmericaUserNZmembershipList(restful.Resource):
@@ -66,7 +69,8 @@ class AmericaUserNZmembershipList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('usersusers_nz_membership_am.html', q=q)
+        html_content = render_template('membership.html', q=q, database="America", table= "americausernzmembership")
+        return Response(html_content, mimetype='text/html')
 
 
 class AmericaMetadata_AmericaList(restful.Resource):
@@ -76,5 +80,5 @@ class AmericaMetadata_AmericaList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('metadata_america.html', q=q)
-
+        html_content = render_template('metadata.html', q=q, database="America", table= "americametadata")
+        return Response(html_content, mimetype='text/html')
