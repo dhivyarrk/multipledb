@@ -50,6 +50,7 @@ CREATE TABLE cars1 (
 drop table cars1;
 
 ```
+Install from requirement.txt
 
 Create migrations:
 
@@ -63,4 +64,28 @@ Run app
 
 ```
 flask --app=flaskbackendmultipledb run
+```
+
+For information related to Asia database:
+
+Eg:
+
+```
+http://127.0.0.1:5000/asia/usersam
+http://127.0.0.1:5000/asia/usersnz
+http://127.0.0.1:5000/asia/genericproducts
+```
+
+For information related to Europe database:
+```
+http://127.0.0.1:5000/europe/usersam
+http://127.0.0.1:5000/europe/genericproducts
+```
+
+For information related to America database:
+```
+http://127.0.0.1:5000/america/usersam
+http://127.0.0.1:5000/america/usersnz
+http://127.0.0.1:5000/america/userammembership
+http://127.0.0.1:5000/america/usernzmembership
 ```
