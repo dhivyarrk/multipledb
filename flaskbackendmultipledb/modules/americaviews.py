@@ -1,4 +1,4 @@
-from flask import g, current_app
+from flask import g, current_app, Response     
 from flask import Flask, render_template
 from flaskbackendmultipledb.database import db
 from flaskbackendmultipledb.models.americamodels import AmericaUserAM, AmericaUserNZ, AmericaGenericProducts, AmericaRegionalProducts, AmericaUserAMmembership, AmericaUserNZmembership, AmericaMetadata_America
@@ -16,7 +16,11 @@ class AmericaUserAMList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('users_am.html', q=q)
+        #return render_template('users_am.html', q=q)
+        
+        # TODO: fix this properly
+        html_content = render_template('users.html', q=q, database="America", table= "useram")
+        return Response(html_content, mimetype='text/html')
 
 class AmericaUserNZList(restful.Resource):
     
@@ -25,15 +29,13 @@ class AmericaUserNZList(restful.Resource):
         #import jsonpickle
         #j = jsonpickle.encode(q)
         #return j
-        return render_template('users_nz.html', q=q)
+        html_content = render_template('users.html', q=q, database="America", table= "usernz")
+        return Response(html_content, mimetype='text/html')
 
 class AmericaGenericProductsList(restful.Resource):
     
     def get(self):
         q = AmericaGenericProducts.query.all()  
-        #import jsonpickle
-        #j = jsonpickle.encode(q)
-        #return j
         return render_template('generic_products.html', q=q)
 
 
@@ -76,4 +78,3 @@ class AmericaMetadata_AmericaList(restful.Resource):
         #return j
         return render_template('metadata_america.html', q=q)
 
-        
